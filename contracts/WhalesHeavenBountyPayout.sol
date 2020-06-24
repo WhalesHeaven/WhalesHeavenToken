@@ -7,7 +7,7 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 interface IERC20 {
     function totalSupply() external view returns (uint256);
     function balanceOf(address account) external view returns (uint256);
-    function silentTransfer(address recipient, uint256 amount) external returns (bool);
+    function transfer(address recipient, uint256 amount) external returns (bool);
 }
 
 
@@ -27,7 +27,7 @@ contract WhalesHeavenBountyPayout is Ownable {
       require(recipients.length == values.length);
 
       for (uint256 i = 0; i < recipients.length; i++) {
-          token().silentTransfer(recipients[i], values[i]);
+          token().transfer(recipients[i], values[i]);
       }
 
       return true;
